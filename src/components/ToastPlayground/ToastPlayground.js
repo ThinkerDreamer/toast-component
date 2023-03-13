@@ -33,6 +33,8 @@ function ToastPlayground() {
     });
 
     setToastStack([...toastStack, newToast]);
+    setMessage('');
+    setVariant(VARIANT_OPTIONS[0]);
   }
 
   return (
