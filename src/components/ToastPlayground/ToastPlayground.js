@@ -26,12 +26,13 @@ function ToastPlayground() {
 
   function handleSubmitToast(e) {
     e.preventDefault();
-    const newToast = new Toast({
+    const id = crypto.randomUUID();
+    const newToast = {
       variant,
-      handleDismiss: dismissToast,
-      id: `${variant}-${Math.random()}`,
+      handleDismiss: () => dismissToast(id),
+      id,
       children: message,
-    });
+    };
 
     setToastStack([...toastStack, newToast]);
     setMessage('');
