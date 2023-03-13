@@ -7,13 +7,21 @@ import { ToastStackContext } from '../App';
 function ToastShelf() {
   const { toastStack } = React.useContext(ToastStackContext);
 
-  const toastSlices = toastStack.map((slice) => (
-    <li className={styles.toastWrapper} key={slice.id}>
-      {slice}
-    </li>
-  ));
-
-  return <ol className={styles.wrapper}>{toastSlices}</ol>;
+  return (
+    <ol className={styles.wrapper}>
+      {toastStack.map(({ variant, handleDismiss, id, children }) => (
+        <li className={styles.toastWrapper} key={id}>
+          <Toast
+            variant={variant}
+            handleDismiss={() => handleDismiss(id)}
+            id={id}
+          >
+            {children}
+          </Toast>
+        </li>
+      ))}
+    </ol>
+  );
 }
 
 export default ToastShelf;
