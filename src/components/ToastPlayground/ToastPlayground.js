@@ -20,7 +20,8 @@ function ToastPlayground() {
     const newToastStack = currentToastStack.filter(
       (toastSlice) => toastSlice.id !== currentId
     );
-    setToastStack([newToastStack]);
+    console.log([...newToastStack]);
+    setToastStack(newToastStack);
   }
 
   function handleSubmitToast(e) {
