@@ -8,9 +8,10 @@ function ToastsProvider({ children }) {
 
   /* This custom hook allows the user to
   dismiss all toasts by hitting the escape key */
-  useEscapeKey(() => {
+  const handleEscape = React.useCallback(() => {
     setToastStack([]);
-  });
+  }, []);
+  useEscapeKey(handleEscape);
 
   function addToast({ variant, message }) {
     const id = crypto.randomUUID();
