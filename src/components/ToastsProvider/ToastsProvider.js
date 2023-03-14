@@ -6,6 +6,8 @@ export const ToastStackContext = React.createContext();
 function ToastsProvider({ children }) {
   const [toastStack, setToastStack] = React.useState([]);
 
+  /* This custom hook allows the user to
+  dismiss all toasts by hitting the escape key */
   useEscapeKey(() => {
     setToastStack([]);
   });
