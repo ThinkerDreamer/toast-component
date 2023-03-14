@@ -3,7 +3,7 @@ import React from 'react';
 function useEscapeKey(callback) {
   React.useEffect(() => {
     function checkForEsc(event) {
-      if (event.code == 'Escape') {
+      if (event.code === 'Escape') {
         console.log('hit escape');
         callback();
       }
@@ -14,7 +14,7 @@ function useEscapeKey(callback) {
     return () => {
       window.removeEventListener('keydown', checkForEsc);
     };
-  }, []);
+  }, [callback]);
 }
 
 export default useEscapeKey;
