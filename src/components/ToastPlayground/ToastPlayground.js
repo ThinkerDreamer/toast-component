@@ -26,6 +26,7 @@ function ToastPlayground() {
         <img alt="Cute toast mascot" src="/toast.png" />
         <h1>Toast Playground</h1>
       </header>
+
       <ToastShelf />
 
       <form onSubmit={handleSubmitToast}>
