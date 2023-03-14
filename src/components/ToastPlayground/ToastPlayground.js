@@ -2,9 +2,8 @@ import React from 'react';
 
 import Button from '../Button';
 import ToastShelf from '../ToastShelf';
-import { ToastStackContext } from '../App';
+import { ToastStackContext } from '../ToastsProvider';
 import styles from './ToastPlayground.module.css';
-import Toast from '../Toast';
 
 const VARIANT_OPTIONS = ['notice', 'warning', 'success', 'error'];
 
@@ -12,29 +11,11 @@ function ToastPlayground() {
   const [message, setMessage] = React.useState('');
   // 'notice' | 'warning' | 'success' | 'error'
   const [variant, setVariant] = React.useState(VARIANT_OPTIONS[0]);
-  const { toastStack, setToastStack } =
-    React.useContext(ToastStackContext);
-
-  function dismissToast(currentId) {
-    const currentToastStack = [...toastStack];
-    const newToastStack = currentToastStack.filter(
-      (toastSlice) => toastSlice.id !== currentId
-    );
-    console.log([...newToastStack]);
-    setToastStack(newToastStack);
-  }
+  const { addToast } = React.useContext(ToastStackContext);
 
   function handleSubmitToast(e) {
     e.preventDefault();
-    const id = crypto.randomUUID();
-    const newToast = {
-      variant,
-      handleDismiss: () => dismissToast(id),
-      id,
-      children: message,
-    };
-
-    setToastStack([...toastStack, newToast]);
+    addToast({ variant, message });
     setMessage('');
     setVariant(VARIANT_OPTIONS[0]);
   }
