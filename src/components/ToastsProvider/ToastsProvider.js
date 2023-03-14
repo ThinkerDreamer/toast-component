@@ -9,7 +9,6 @@ function ToastsProvider({ children }) {
     const id = crypto.randomUUID();
     const newToast = {
       variant,
-      handleDismiss: () => dismissToast(id),
       id,
       children: message,
     };
