@@ -1,18 +1,14 @@
 import React from 'react';
-
 import ToastPlayground from '../ToastPlayground';
 import Footer from '../Footer';
-
-export const ToastStackContext = React.createContext();
+import ToastsProvider from '../ToastsProvider';
 
 function App() {
-  const [toastStack, setToastStack] = React.useState([]);
-
   return (
-    <ToastStackContext.Provider value={{ toastStack, setToastStack }}>
+    <ToastsProvider>
       <ToastPlayground />
       <Footer />
-    </ToastStackContext.Provider>
+    </ToastsProvider>
   );
 }
 
